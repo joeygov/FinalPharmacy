@@ -5,14 +5,12 @@
         <group>
             <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/DashBoard.java</file>
             <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/addMedicine.java</file>
-            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/API/pharmacistsActivity.java</file>
-            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/SignUpForm.java</file>
+            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/updatePanel.java</file>
             <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedAppDB/QueryStatements.java</file>
-            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/AccountsTab.java</file>
-            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/RegistrationForm.java</file>
             <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/MedecineTab.java</file>
-            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/MainMenu.java</file>
             <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/Home.java</file>
+            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/MainMenu.java</file>
+            <file>file:/C:/Users/destacamento_sd2022/Documents/NetBeansProjects/AKONGPHARMACY/src/MedApp/OrdersTab.java</file>
         </group>
     </open-files>
 </project-private>

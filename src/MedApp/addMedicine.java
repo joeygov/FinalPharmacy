@@ -80,7 +80,7 @@ public class addMedicine extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(7, 10, 50));
 
-        home.setText("Home");
+        home.setText("Back");
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeActionPerformed(evt);
@@ -150,10 +150,11 @@ public class addMedicine extends javax.swing.JFrame {
                                         .addGap(15, 15, 15)))
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(quantityField, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                    .addComponent(priceField)
-                                    .addComponent(mfDate)
-                                    .addComponent(exDate))))))
+                                    .addComponent(mfDate, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                    .addComponent(exDate)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(priceField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                                        .addComponent(quantityField, javax.swing.GroupLayout.Alignment.LEADING)))))))
                 .addContainerGap(177, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -236,8 +237,8 @@ public class addMedicine extends javax.swing.JFrame {
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
-        DashBoard mainBoard = new DashBoard();
-        mainBoard.setVisible(true);
+       MedecineTab medTab = new   MedecineTab();
+        medTab.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeActionPerformed
 

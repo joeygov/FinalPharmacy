@@ -121,7 +121,6 @@ public class QueryStatements {
                 String genericName = rs.getString("genericName");
                 String description = rs.getString("description");
                 float price = rs.getInt("price");
-
                 System.out.println(medecineName + "\t" + genericName
                         + "\t" + description + "\t" + price);
 
@@ -134,7 +133,7 @@ public class QueryStatements {
 
     }
 
-    public void deleteMedicine(int medID, String medName) {
+    public void deleteMedicine(int medicineID, String medicineName) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
@@ -142,7 +141,7 @@ public class QueryStatements {
             String query = "SELECT medicineID, medecineCategory, medicineName, genericName, description, price, quantity, dateProduce, dateExpire FROM tblmedecine";
             ResultSet rs = stmt.executeQuery(query);
             stmt = con.createStatement();
-            String sql = " DELETE from tblmedecine where medicineID='" + medID + " ' AND medicineName='" + medName + "'";
+            String sql = " DELETE from tblmedecine where medicineID='" + medicineID + " ' AND medicineName='" + medicineName + "'";
             System.out.println(sql);
             stmt.executeUpdate(sql);
             stmt.close();
@@ -153,6 +152,27 @@ public class QueryStatements {
             ex.printStackTrace();
         }
 
+    }
+//,String name,  String genericName, String description, int price, int quantity, String dateManufactured, String expireDate
+    public void updateMedicine(int medicineID, String medicineName ) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
+            Statement stmt = con.createStatement();
+            String query = "SELECT medicineID, medecineCategory, medicineName, genericName, description, price, quantity, dateProduce, dateExpire FROM tblmedecine";
+            ResultSet rs = stmt.executeQuery(query);
+            stmt = con.createStatement();
+            String sql = " Update tblmedecine WHERE medicineID='" + medicineID + " ' AND medicineName='" + medicineName + " ' SET medicineName='" + "hey" + "'";//" '  genericName='" +genericName+" '  description='" +description+" '  price='" + price +" '  quantity='" + quantity+ " 'dateProduce='" + dateManufactured+  " ' dateExpire='" +expireDate +
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            stmt.close();
+            con.close();
+            System.out.println("\nMurag na Update");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+       
     }
 
 }

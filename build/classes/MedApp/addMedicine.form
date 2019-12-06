@@ -76,10 +76,12 @@
                                   </Group>
                                   <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="quantityField" pref="279" max="32767" attributes="0"/>
-                                      <Component id="priceField" max="32767" attributes="0"/>
-                                      <Component id="mfDate" max="32767" attributes="0"/>
+                                      <Component id="mfDate" pref="279" max="32767" attributes="0"/>
                                       <Component id="exDate" max="32767" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="priceField" alignment="0" pref="52" max="32767" attributes="0"/>
+                                          <Component id="quantityField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -241,7 +243,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="home">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Home"/>
+                <Property name="text" type="java.lang.String" value="Back"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeActionPerformed"/>

@@ -224,6 +224,9 @@ public class Home extends javax.swing.JFrame {
         String password = loginPassField.getText();
         QueryStatements log = new QueryStatements();
         log.login(username, password);
+       MainMenu login = new  MainMenu();
+        login.setVisible(true);
+        dispose();
         
 
     }//GEN-LAST:event_loginButtonActionPerformed

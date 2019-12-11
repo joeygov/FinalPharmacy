@@ -335,12 +335,10 @@ public class MedecineTab extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-        String id = medID.getText();
-        int medicineID = Integer.parseInt(id);
-        String medicineName = medName.getText();
-        QueryStatements updateMed = new QueryStatements();
-        updateMed.deleteMedicine(medicineID, medicineName);
+
+        updatePanel update = new updatePanel();
+        update.setVisible(true);
+        dispose();
         
 
     }//GEN-LAST:event_updateButtonActionPerformed

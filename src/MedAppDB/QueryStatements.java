@@ -113,7 +113,7 @@ public class QueryStatements {
             ResultSet rs = stmt.executeQuery(query);
 
             stmt = con.createStatement();
-            String sql = "select * from tblmedecine where medicineName='" + searchMed + "'OR genericName='" + searchMed + "'";
+            String sql = "select * from tblmedecine where medicineName Like'" + searchMed + "'OR genericName Like'" + searchMed + "'";
             System.out.println(sql);
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -154,7 +154,7 @@ public class QueryStatements {
 
     }
 //,String name,  String genericName, String description, int price, int quantity, String dateManufactured, String expireDate
-    public void updateMedicine(int medicineID, String medicineName ) {
+    public void updateMedicine(int medID, String name, String gen, String descrip, int price, int quantity, String produceDate , String expireDate ) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
@@ -162,9 +162,9 @@ public class QueryStatements {
             String query = "SELECT medicineID, medecineCategory, medicineName, genericName, description, price, quantity, dateProduce, dateExpire FROM tblmedecine";
             ResultSet rs = stmt.executeQuery(query);
             stmt = con.createStatement();
-            String sql = " Update tblmedecine WHERE medicineID='" + medicineID + " ' AND medicineName='" + medicineName + " ' SET medicineName='" + "hey" + "'";//" '  genericName='" +genericName+" '  description='" +description+" '  price='" + price +" '  quantity='" + quantity+ " 'dateProduce='" + dateManufactured+  " ' dateExpire='" +expireDate +
-            System.out.println(sql);
+            String sql = "UPDATE `tblmedecine` SET `medicineName`='" + name + "',`genericName`='" + gen + "',`description`='" + descrip + "',`price`='" + price + "',`quantity`='" + quantity + "',`dateProduce`=" + produceDate + ",`dateExpire`=" + expireDate + " WHERE medicineID = " + medID;
             stmt.executeUpdate(sql);
+            System.out.println(sql);
             stmt.close();
             con.close();
             System.out.println("\nMurag na Update");

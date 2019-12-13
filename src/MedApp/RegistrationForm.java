@@ -180,7 +180,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         
          QueryStatements reg = new QueryStatements();
          reg.register(firstName, lastname, place, edad, gmail, user, pass);
-         Home login = new Home();
+         Login login = new Login();
          login.setVisible(true);
          dispose();
         

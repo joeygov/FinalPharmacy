@@ -43,7 +43,7 @@ public class QueryStatements {
 
     public void login(String username, String password) {
         MainMenu maintab = new MainMenu();
-        Home home = new Home();
+        Login home = new Login();
 
         try {
             Class.forName("com.mysql.jdbc.Driver");

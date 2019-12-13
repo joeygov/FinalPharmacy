@@ -274,7 +274,7 @@ public class MedecineTab extends javax.swing.JFrame {
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
-        Home home = new Home();
+        Login home = new Login();
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_logoutActionPerformed

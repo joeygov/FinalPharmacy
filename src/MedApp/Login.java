@@ -223,11 +223,17 @@ public class Login extends javax.swing.JFrame {
         String username = loginUnameField.getText();
         String password = loginPassField.getText();
         QueryStatements log = new QueryStatements();
-        log.login(username, password);
-       MainMenu login = new  MainMenu();
-        login.setVisible(true);
-        dispose();
-        
+        if (username == "admin" && password == "admin") {
+            DashBoard dash = new DashBoard();
+            dash.setVisible(true);
+            dispose();
+        } else {
+            log.login(username, password);
+            MainMenu login = new MainMenu();
+            login.setVisible(true);
+            dispose();
+        }
+
 
     }//GEN-LAST:event_loginButtonActionPerformed
 

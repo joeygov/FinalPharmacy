@@ -183,8 +183,6 @@ public class RegistrationForm extends javax.swing.JFrame {
          Login login = new Login();
          login.setVisible(true);
          dispose();
-        
-        
 
     }//GEN-LAST:event_submitButtonActionPerformed
 

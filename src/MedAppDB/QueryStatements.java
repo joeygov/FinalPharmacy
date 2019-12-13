@@ -12,6 +12,7 @@ import java.sql.Statement;
 import MedApp.*;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,7 @@ import java.sql.SQLException;
 public class QueryStatements {
 
     public void register(String firstName, String lastname, String place, int edad, String email, String user, String password) {
+        boolean flag = true;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
@@ -31,11 +33,17 @@ public class QueryStatements {
             String sql = "INSERT INTO tblAccounts(lastname, firstName,address, age, email, username, password) VALUES ";
             sql += "('" + lastname + "','" + firstName + "','" + place + "','" + edad + "','" + email + "','" + user + "', '" + password + "')";
             System.out.println(sql);
-            stmt.executeUpdate(sql);
+            while (flag == true) {
+                if (edad < 18) {
+                    JOptionPane.showInputDialog("Minors are not allowed to use this system!");
+                    continue;
+                } else {
+                    stmt.executeUpdate(sql);
 
-            stmt.close();
-            con.close();
-
+                    stmt.close();
+                    con.close();
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -61,14 +69,14 @@ public class QueryStatements {
                 count = count + 1;
             }
             if (count == 1) {
-                System.out.println("Login Successful");
+                JOptionPane.showInputDialog("Successfully login!");
                 maintab.setVisible(true);
                 home.dispose();
             } else if (count > 1) {
-                System.out.println("Login Failed!");
+                JOptionPane.showInputDialog("Login Failed!");
 
             } else {
-                System.out.println("Account doesn't exist!");;
+                JOptionPane.showInputDialog("Account doesn't exist!");
             }
 
             stmt.close();
@@ -92,10 +100,14 @@ public class QueryStatements {
             String sql = "INSERT INTO tblmedecine( medecineCategory, medicineName, genericName, description, price, quantity, dateProduce, dateExpire) VALUES ";
             sql += "('" + medecineCategory + "','" + medecineName + "','" + genericName + "','" + description + "','" + price + "','" + quantity + "', '" + dateManufactured + "','" + expireDate + "')";
             System.out.println(sql);
-            stmt.executeUpdate(sql);
+            if ("".equals(medecineName) || genericName == "" || description == "" || price == 0 || quantity == 0 || dateManufactured == "" || expireDate == "") {
+                JOptionPane.showInputDialog("All Fields are required!");
+            } else {
+                stmt.executeUpdate(sql);
 
-            stmt.close();
-            con.close();
+                stmt.close();
+                con.close();
+            }
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -154,7 +166,8 @@ public class QueryStatements {
 
     }
 //,String name,  String genericName, String description, int price, int quantity, String dateManufactured, String expireDate
-    public void updateMedicine(int medID, String name, String gen, String descrip, int price, int quantity, String produceDate , String expireDate ) {
+
+    public void updateMedicine(int medID, String name, String gen, String descrip, int price, int quantity, String produceDate, String expireDate) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
@@ -172,7 +185,7 @@ public class QueryStatements {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-       
+
     }
 
 }

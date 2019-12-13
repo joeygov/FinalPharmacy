@@ -33,17 +33,12 @@ public class QueryStatements {
             String sql = "INSERT INTO tblAccounts(lastname, firstName,address, age, email, username, password) VALUES ";
             sql += "('" + lastname + "','" + firstName + "','" + place + "','" + edad + "','" + email + "','" + user + "', '" + password + "')";
             System.out.println(sql);
-            while (flag == true) {
-                if (edad < 18) {
-                    JOptionPane.showInputDialog("Minors are not allowed to use this system!");
-                    continue;
-                } else {
-                    stmt.executeUpdate(sql);
 
-                    stmt.close();
-                    con.close();
-                }
-            }
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            con.close();
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -52,14 +47,12 @@ public class QueryStatements {
     public void login(String username, String password) {
         MainMenu maintab = new MainMenu();
         Login home = new Login();
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
             Statement stmt = con.createStatement();
             String query = "SELECT * FROM tblaccounts";
             ResultSet rs = stmt.executeQuery(query);
-
             stmt = con.createStatement();
             String sql = "select * from tblaccounts where username='" + username + "'and password='" + password + "'";
             System.out.println(sql);
@@ -69,14 +62,12 @@ public class QueryStatements {
                 count = count + 1;
             }
             if (count == 1) {
-                JOptionPane.showInputDialog("Successfully login!");
                 maintab.setVisible(true);
+                new Login().setVisible(false);
                 home.dispose();
             } else if (count > 1) {
-                JOptionPane.showInputDialog("Login Failed!");
+                JOptionPane.showMessageDialog(null, "Login Failed!");
 
-            } else {
-                JOptionPane.showInputDialog("Account doesn't exist!");
             }
 
             stmt.close();
@@ -100,14 +91,9 @@ public class QueryStatements {
             String sql = "INSERT INTO tblmedecine( medecineCategory, medicineName, genericName, description, price, quantity, dateProduce, dateExpire) VALUES ";
             sql += "('" + medecineCategory + "','" + medecineName + "','" + genericName + "','" + description + "','" + price + "','" + quantity + "', '" + dateManufactured + "','" + expireDate + "')";
             System.out.println(sql);
-            if ("".equals(medecineName) || genericName == "" || description == "" || price == 0 || quantity == 0 || dateManufactured == "" || expireDate == "") {
-                JOptionPane.showInputDialog("All Fields are required!");
-            } else {
-                stmt.executeUpdate(sql);
-
-                stmt.close();
-                con.close();
-            }
+            stmt.executeUpdate(sql);
+            stmt.close();
+            con.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -116,7 +102,6 @@ public class QueryStatements {
     }
 
     public void searhMedecine(String searchMed) {
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
@@ -186,6 +171,49 @@ public class QueryStatements {
             ex.printStackTrace();
         }
 
+    }
+    //medID, medicineName, quant
+
+    public void printOrders(int medID, String medicineName, int quant) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/medappdb", "root", "");
+            Statement stmt = con.createStatement();
+            //String query = "SELECT * FROM tblorders";
+          
+            //////////////////////////////////////////
+            Statement state = con.createStatement();
+            String quer = "SELECT medicineName, genericName, description, price FROM tblmedecine";
+            ResultSet res = stmt.executeQuery(quer);
+            System.out.println(res);
+            state = con.createStatement();
+            String ask = "select * from tblmedecine where medicineID ='" + medID + "'OR medicineName Like'" + medicineName + "'";
+            System.out.println(ask);
+            res = stmt.executeQuery(ask);
+            while (res.next()) {
+                String medecineName = res.getString("medicineName");
+                String genericName = res.getString("genericName");
+                String description = res.getString("description");
+                float price = res.getInt("price");
+                System.out.println(medecineName + "\t" + genericName
+                        + "\t" + description + "\t" + price);
+                //////////////////////////////////////////
+                stmt = con.createStatement();
+                String sql = "INSERT INTO tblorders( items, amount) VALUES ";
+                sql += "('" + medicineName + "','" + quant * price + "')";
+                float amount = quant * price;
+                JOptionPane.showMessageDialog(null, "Your Reciepts:\n" + medicineName +"          "+ amount );
+                
+                System.out.println(sql);
+                stmt.executeUpdate(sql);
+            }
+            stmt.close();
+            con.close();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+//            ex.printStackTrace();
+            System.out.println(ex);
+        }
     }
 
 }

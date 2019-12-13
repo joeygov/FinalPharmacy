@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package MedApp;
+
 import MedAppDB.*;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -173,16 +173,24 @@ public class RegistrationForm extends javax.swing.JFrame {
         String firstName = fName.getText();
         String lastname = lastName.getText();
         String place = address.getText();
-        String gmail = email.getText(); 
-        int  edad = Integer.parseInt(gors);
+        String gmail = email.getText();
+        int edad = Integer.parseInt(gors);
         String user = Uname.getText();
         String pass = password.getText();
-        
-         QueryStatements reg = new QueryStatements();
-         reg.register(firstName, lastname, place, edad, gmail, user, pass);
-         Login login = new Login();
-         login.setVisible(true);
-         dispose();
+
+        if ("".equals(firstName) || "".equals(lastname) || "".equals(place) || edad == 0 || "".equals(gmail) || "".equals(user) || "".equals(pass)) {
+            JOptionPane.showMessageDialog(null, "All Fields Required!");
+        } else if (edad < 18) {
+            JOptionPane.showMessageDialog(null, "Minors are not allowed!");
+            RegistrationForm form = new RegistrationForm();
+            form.dispose();
+        } else {
+            QueryStatements reg = new QueryStatements();
+            reg.register(firstName, lastname, place, edad, gmail, user, pass);
+            Login login = new Login();
+            login.setVisible(true);
+            dispose();
+        }
 
     }//GEN-LAST:event_submitButtonActionPerformed
 

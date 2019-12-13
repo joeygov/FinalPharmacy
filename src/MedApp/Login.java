@@ -6,6 +6,7 @@
 package MedApp;
 
 import MedAppDB.QueryStatements;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -222,24 +223,19 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = loginUnameField.getText();
         String password = loginPassField.getText();
-        QueryStatements log = new QueryStatements();
-        if (username == "admin" && password == "admin") {
+
+        if (username.equals("admin") && password.equals("admin")) {
             DashBoard dash = new DashBoard();
             dash.setVisible(true);
             dispose();
         } else {
+            QueryStatements log = new QueryStatements();
             log.login(username, password);
-            MainMenu login = new MainMenu();
-            login.setVisible(true);
-            dispose();
         }
-
-
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         // TODO add your handling code here:
-
         RegistrationForm form = new RegistrationForm();
         form.setVisible(true);
         dispose();

@@ -5,8 +5,7 @@
  */
 package MedApp;
 
-import MedApp.Login;
-import MedApp.DashBoard;
+
 
 /**
  *

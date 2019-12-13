@@ -8,6 +8,7 @@ package MedApp;
 import MedApp.Login;
 import MedApp.DashBoard;
 import MedAppDB.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -215,7 +216,7 @@ public class addMedicine extends javax.swing.JFrame {
 
     private void addMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMedActionPerformed
         // TODO add your handling code here:
-        String quant =quantityField.getText();
+        String quant = quantityField.getText();
         String presyo = priceField.getText();
         String medecineCategory = categoryField.getText();
         String medecineName = medName.getText();
@@ -228,16 +229,20 @@ public class addMedicine extends javax.swing.JFrame {
 
         QueryStatements addMedecine = new QueryStatements();
         addMedecine.addMedecine(medecineCategory, medecineName, genericName, description, price, quantity, dateManufactured, expireDate);
-
+        
+        if ("".equals(medecineCategory) || "".equals(medecineName) || "".equals(genericName) || "".equals(description) || price == 0  || quantity == 0 || "".equals(dateManufactured) || "".equals(expireDate)) {
+            JOptionPane.showMessageDialog(null, "All Fields Are Required");
+        }
         DashBoard mainBoard = new DashBoard();
         mainBoard.setVisible(true);
         dispose();
+
 
     }//GEN-LAST:event_addMedActionPerformed
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
-       MedecineTab medTab = new   MedecineTab();
+        MedecineTab medTab = new MedecineTab();
         medTab.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeActionPerformed
